@@ -1,38 +1,191 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+:root {
+  --default-color: #FF8C00;
+  --default-text-color: #cbe1ff;
+  --white: #ffffff;
+  --black-first: #363e4d;
+  --black-second: #242933;
+  --main-black: #161a20;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  -webkit-tap-highlight-color: transparent; /* transparent */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* transparent */
+  -webkit-tap-highlight-color: hsla(0, 0, 0, 0); /* transparent */
+  -webkit-tap-highlight-color: #00000000; /* transparent */
+  -webkit-tap-highlight-color: #000; /* transparent */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: #e5e5e5;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 100%;  
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Container class */
+.container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 0.5rem;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.container .calculator {
+  height: 90vh;
+  width: 330px;
+  background-color: var(--main-black);
+  border-radius: 0.5rem;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* global button style for my calculator */
+button { 
+  border: unset; 
+  box-shadow: unset; 
+  color: var(--default-text-color); 
+  cursor: pointer; 
+}
+
+button.special { 
+  background-color: var(--default-color);
+}
+
+/* wrapper */
+.c-wrapper {
+  display: grid;
+  grid-auto-rows: 10% 28% 11% 51%;
+  height: 100%;
+}
+
+.ctc {
+  padding: 0.5rem 1rem;
+
+}
+.c-type {
+  display: grid;
+  /* grid-template-columns: repeat(2, 1fr); */
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.c-type button {
+  padding: 0.5rem;
+  background-color: var(--black-first);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.5s linear;
+}
+
+.c-type button.active{
+  background-color: var(--default-color);
+}
+
+.c-screen{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.c-history-answer {
+  background-color: var(--black-first);
+  padding: 0.2rem 1rem;
+  border-radius: 0.5rem;
+  color: var(--default-text-color);
+  font-weight: 300;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.c-answer {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--white);
+  
+}
+
+.c-compute {
+  background-color: var(--black-first);
+  padding: 0.4rem 1rem;
+  display: grid;
+  grid-template-columns: minmax(0px, 50px) repeat(2,1fr);
+  font-size: 1.8rem;
+  font-weight: 300;
+  overflow: hidden;
+}
+.c-compute span {
+  letter-spacing: 0.1re;
+  color: var(--default-text-color);
+  word-wrap: break-word;
+  word-break: break-all;
+  grid-column: span 2;
+  text-align: right;
+  padding-top: 0.4rem;
+}
+
+.c-compute > button {
+  background-color: unset;
+  font-size: 1.2rem;
+  color: var(--default-text-color);
+}
+
+
+/* Grid buttons for my calculator */
+.c-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0.5rem 1rem;
+  
+}
+
+.c-grid > button {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  background-color: var(--black-second);
+  border: 3px solid var(--main-black);
+}
+
+.c-grid > button:hover{
+  background-color: rgba(255, 255, 255, 0.2);
+} 
+
+.c-grid > button:top-btn {
+  background-color: var(--black-first);
+   
+}
+
+.c-grid > button.normal {
+  background-color: var(--black-second);
+}
+.c-grid > button.normal:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.c-grid > button.special {
+  background-color: var(--default-color);
+}
+.c-grid > button.special:hover {
+  background-color: #FFA500;
+}
+.span-two{
+  grid-column: span 2;
 }
